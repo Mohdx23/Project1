@@ -19,13 +19,14 @@ public static class BattleHandler
         // we just award the maximum possible win to the player
         float outcome = Random.Range(-1.0f, 1.0f);
 
-        float formula = outcome * data.player.rhythm / data.player.luck - data.player.style;
+        float formula = outcome * data.player.rhythm + data.player.luck / data.player.style;
 
         formula = Mathf.Clamp(formula, -1.0f, 1.0f);
-
+        Debug.Log (formula);
         var results = new BattleResultEventData(data.player, data.npc, formula);
 
         GameEvents.FinishedBattle(results);
     }
 }
 // ST + ST / ST
+//(outcome * data.player.rhythm / data.player.luck - data.player.style);

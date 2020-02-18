@@ -28,9 +28,12 @@ public class XPHandler : MonoBehaviour
     public void GainXP(BattleResultEventData data)
     {
         int initialxp = 0;
-
         if (data.outcome > 0)
+        {
+        print("xd");
             data.player.xp += 25;
+            GameEvents.PlayerXPGain(25);
+        }
 
         int xprequired = data.player.level * 250 + initialxp;
 
